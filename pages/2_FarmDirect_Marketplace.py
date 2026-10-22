@@ -28,11 +28,47 @@ if "products" not in st.session_state:
             "Location": "Puttur"
         }
     ]
-
 st.header("🛒 Available Products")
 
 df = pd.DataFrame(st.session_state.products)
-st.dataframe(df, use_container_width=True)
+
+Search by product name
+
+search = st.text_input("🔍 Search products")
+
+Filter by location
+
+locations = ["All Locations"] + sorted(
+df["Location"].unique().tolist()
+)
+selected_location = st.selectbox(
+"📍 Filter by Location",
+locations
+)
+
+Apply filters
+
+filtered_df = df.copy()
+
+if search.strip():
+filtered_df = filtered_df[
+filtered_df["Product"].str.contains(
+search.strip(), case=False, na=False
+)
+]
+
+if selected_location != "All Locations":
+filtered_df = filtered_df[
+filtered_df["Location"] == selected_location
+]
+
+Display results
+
+if not filtered_df.empty:
+st.dataframe(filtered_df, use_container_width=True)
+st.success(f"{len(filtered_df)} product(s) found.")
+else:
+st.warning("No products found. Try another search.")
 
 st.header("🌱 Add Your Produce")
 
