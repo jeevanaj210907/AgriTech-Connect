@@ -7,6 +7,14 @@ st.set_page_config(
     page_icon="🌱",
     layout="wide"
 )
+language = st.selectbox(
+"🌐 Select Language / ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+["English", "ಕನ್ನಡ"]
+)
+
+
+is_kannada = language == "ಕನ್ನಡ"
+
 
 # Connect to Supabase
 @st.cache_resource
