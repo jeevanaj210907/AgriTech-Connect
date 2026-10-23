@@ -55,7 +55,7 @@ if len(df) > 0:
 else:
     st.info("No matching products found.")
 
-Price Comparison
+#Price Comparison
 
 st.header("💰 Compare Product Prices")
 
