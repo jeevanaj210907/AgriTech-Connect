@@ -51,11 +51,12 @@ risk_scores = (
 
 
 def assign_risk(score):
-if score >= 3:
-return "High Risk"
-elif score >= 1:
-return "Medium Risk"
-return "Low Risk"
+    if score >= 3:
+        return "High Risk"
+    elif score >= 1:
+        return "Medium Risk"
+    else:
+        return "Low Risk"
 
 
 labels = risk_scores.apply(assign_risk)
