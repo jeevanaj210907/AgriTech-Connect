@@ -1,18 +1,14 @@
 name: Train AquaGuard Model
 
-
 on:
-workflow_dispatch
-
+workflow_dispatch:
 
 jobs:
 train:
 runs-on: ubuntu-latest
-
-
 steps:
-  - name: Download repository
-    uses: actions/checkout@v4
+- name: Download repository
+uses: actions/checkout@v4
 
   - name: Set up Python
     uses: actions/setup-python@v5
@@ -27,11 +23,8 @@ steps:
   - name: Train model
     run: python train_model.py
 
-  - name: Save trained model as workflow artifact
+  - name: Save trained model
     uses: actions/upload-artifact@v4
     with:
       name: aquaguard-model
       path: aquaguard_model.pkl
-
-
-
