@@ -10,7 +10,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 
-EDUCATIONAL DEMONSTRATION DATA ONLY
+#EDUCATIONAL DEMONSTRATION DATA ONLY
 
 
 These examples are generated from illustrative rules.
