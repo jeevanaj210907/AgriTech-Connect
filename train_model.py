@@ -13,10 +13,10 @@ from sklearn.preprocessing import StandardScaler
 #EDUCATIONAL DEMONSTRATION DATA ONLY
 
 
-These examples are generated from illustrative rules.
+#These examples are generated from illustrative rules.
 
 
-They are NOT real farm measurements or validated labels.
+#They are NOT real farm measurements or validated labels.
 
 
 np.random.seed(42)
@@ -39,7 +39,7 @@ data = pd.DataFrame({
 })
 
 
-Illustrative labels, not scientifically validated predictions.
+#Illustrative labels, not scientifically validated predictions.
 
 
 risk_scores = (
