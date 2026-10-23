@@ -55,6 +55,58 @@ if len(df) > 0:
 else:
     st.info("No matching products found.")
 
+Price Comparison
+
+st.header("💰 Compare Product Prices")
+
+if len(df) > 0:
+comparison = df.copy()
+
+comparison["Price per kg (₹)"] = pd.to_numeric(
+    comparison["Price per kg (₹)"],
+    errors="coerce"
+)
+
+comparison = comparison.dropna(
+    subset=["Price per kg (₹)"]
+)
+
+if not comparison.empty:
+    lowest_price = comparison[
+        "Price per kg (₹)"
+    ].min()
+
+    st.write("Compare prices by product and location.")
+
+    selected_product = st.selectbox(
+        "Choose a product to compare",
+        sorted(comparison["Product"].unique()),
+        key="compare_product"
+    )
+
+    product_prices = comparison[
+        comparison["Product"].str.lower()
+        == selected_product.lower()
+    ].sort_values("Price per kg (₹)")
+
+    st.dataframe(
+        product_prices,
+        use_container_width=True,
+        hide_index=True
+    )
+
+    cheapest = product_prices.iloc[0]
+
+    st.success(
+        f"🏆 Lowest listed price for {selected_product}: "
+        f"₹{cheapest['Price per kg (₹)']:.2f}/kg "
+        f"in {cheapest['Location']}."
+    )
+else:
+    st.info("No prices available to compare.")
+
+else:
+st.info("Add products to start comparing prices.")
 # Add products
 st.header("🌾 Add Your Produce")
 
